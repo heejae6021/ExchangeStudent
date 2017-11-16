@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title> heejae </title>
+
+
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=zFNXGkXU2OctaS0QsL2F&submodules=geocoder"></script>
+
+
+    <style>
+
+      /* modal background */
+      .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+      }
+
+      /* Modal Content(내용) */
+      .modal-content {
+      background-color: white;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%;
+      height: 50%;
+      }
+
+      /* close button */
+      .close {
+      color : #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      }
+      .close:hover, .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <a href="http://www.naver.com"> <p style="color:green;text-align:center;">my link to NAVER</p></a>
+    <h1 style="text-align:center"> 기미재 자바스크립트 모달 지도 연습페이지 </h1>
+    <div style="text-align:center"><button id='libtn'> <p style="color:blue;text-align:center;"> 클릭하면 파랗게 <p> </button></div>
+    <h2 style="text-align:center"> 모달로 나타나는 지도 </h2>
+
+    <div style="text-align:center"><button id="myBtn"> <p style="text-align:center;"> 지도 나와랏! </p> </button></div>
+
+
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+       <!-- Modal Content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 style="margin:auto;text-align:center;">희재네</h3><br><br>
+            <div id="map1" style="width:90%;height:300px;margin:auto;"></div>
+        </div>
+    </div>
+
+    <script>
+
+    var libtn = document.getElementById('libtn');
+    var h1 = document.getElementsByTagName("h1")[0];
+    // h1 태그 중에서 첫번째 꺼를 가져와라.
+      libtn.onclick = function () {
+        // document.write('<ul><li>1</li></ul>');
+        h1.style.color = 'blue';
+      }
+
+    // get the modal
+    var modal = document.getElementById("myModal");
+
+    // get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // click the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+      console.log("clicked");
+    }
+
+    // click the X button, close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // click anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // 지도에 대한 자바스크립트 코드
+    var mapOptions1 = {
+      center: new naver.maps.LatLng(37.502986, 126.985111),
+      zoom: 10
+    }
+    var map1 = new naver.maps.Map('map1', mapOptions1);
+    map1.setOptions({ //모든 지도 컨트롤 보이기
+      scaleControl: true,
+      logoControl: true,
+      mapDataControl: true,
+      zoomControl: true,
+      mapTypeControl: true
+    });
+    var marker1 = new naver.maps.Marker({
+      position: new naver.maps.LatLng(37.503526, 126.985277),
+      map: map1
+    });
+    var contentString = [
+      '<div class="iw_inner">',
+        '<h3>희재네집</h3>',
+        '<p>서울특별시 신반포로9 반포아파트 **동 ***호<br/>',
+      // '<img src="'+ HOME_PATH +'/img/example/hi-seoul.jpg" width="55" height="55" alt="서울시청" class="thumb" /><br />',
+      // '02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
+      // '<a href="http://www.seoul.go.kr";; target="_blank">www.seoul.go.kr/</a>',
+        '</p>',
+      '</div>'
+    ].join('');
+
+    var infowindow = new naver.maps.InfoWindow({
+      content: contentString
+    });
+
+    naver.maps.Event.addListener(marker1, "click", function(e) {
+      if (infowindow.getMap()) {
+        infowindow.close();
+        } else {
+        infowindow.open(map1, marker1);
+        }
+      });
+
+    inflowindow.close();
+
+
+    </script>
+  </body>
+</html>
