@@ -1,0 +1,38 @@
+<h1>Assigns#view</h1>
+<p>Find me in app/views/assigns/view.html.erb</p>
+
+<html>
+    
+    <head>
+    <script>
+        $("document").ready(function() {
+            $("#btn1").click(function() {
+                // $("h1").toggle("slow");
+                $("#move").animate({letterSpacing: "+=10px"});
+                // $("#move").animate({top:"+=300px"}, "slow");
+                // $("#move").animate({left:"-=300px"}, "slow");
+                // $("#move").animate({top:"-=300px"}, "slow");
+            })
+        })
+        
+    // $(document).ready(function(){
+    //   $('.slider').bxSlider();
+    // });
+    </script>
+    </head>
+    
+    <body>
+    <center><button id="btn1">Press the Button</button></center><br>
+    <!--<h1 style="display:none;">Like Lion</h1>-->
+    <center><div id="move" style="background-color:red;width:500px;height:100px;color:white;position:relative;">Moving Box</div></center>
+    <!--움직일 수 있게 position을 relative로 확장하는 것이 중요-->
+    
+    <!--<div class="slider">-->
+    <!--    <div><img src="/assets/lion1.jpg"></div>-->
+    <!--    <div><img src="/assets/lion2.jpg"></div>-->
+    <!--    <div><img src="/assets/lion3.jpg"></div>-->
+    <!--</div>-->
+    <!--</body>-->
+    
+</html>
+
