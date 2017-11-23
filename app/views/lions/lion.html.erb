@@ -1,0 +1,43 @@
+<h1>Lions#lion</h1>
+<p>Find me in app/views/lions/lion.html.erb</p>
+
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+              
+        <script>
+            
+            $("document").ready( function() {
+                $("#btn1").click( function() {
+                    $("h1").toggle('slow');
+                    $("#move").animate({left: "+=300px"}, "slow");
+                    $("#move").animate({top: "+=300px"}, "slow");
+                    $("#move").animate({left: "-=300px"}, "slow");
+                    $("#move").animate({top: "-=300px"}, "slow");
+                })
+                
+                $('.slider').bxSlider();
+                
+            })
+            
+            
+        </script>
+
+
+    </head>
+    
+    <body>
+        <button id = "btn1">버튼1</button>
+        <h1 style="display:none;">멋쟁이사자처럼</h1>
+        
+        <div id="move" style = "background-color:green; width:100px; height:100px; position:relative;"></div>
+        
+        <div class="slider">
+            <div><img src="/assets/map.png"></div>
+            <div><img src="/assets/wake_up.png"></div>
+        </div>
+    </body>
+</html>
