@@ -1,0 +1,46 @@
+<head>
+
+  <script>
+//      html을 먼저 작동시키고 그다음에 jQuery를 작동시키겠다 는 의미에서 가장 먼저 적는 것.
+//      head에 있는 이 script를 먼저 작동하는 것이 아니라 아래 body를 먼저 작동하겠다.
+      $('document').ready(function() {
+          $('#btn1').click(function() { // click은 자바스크립트에서 action이라는 이벤트이다.
+              $('h1').toggle('slow'); // show는 effect이다. effect에는 show, hide, toggle, fadeIn 등이 있다.
+              $('#move').animate({left:"+200px"
+              }, 'slow')
+              $('#move').animate({top:"+200px"
+              }, 'slow')
+              $('#move').animate({height:"300px"
+              }, 'slow')
+              $('#move').animate({width:"400px" //이건 왜 작동이 안되는 것일까ㅠㅠ
+              }, 'slow')
+          })
+          $('.bxslider').bxSlider({
+              auto: true,
+              autoControls: true,
+              stopAutoOnClick: true,
+              pager: true,
+              slideWidth: 600
+          });
+
+
+      })
+  </script>
+
+</head>
+
+<body>
+
+  <button id="btn1"> 버튼1 </button>
+  <!--<h1 style="display:none;"> 멋쟁이사자처럼 </h1>-->
+  <div id='move' style="height:200px;width:300px;position:relative;margin:auto;display:flex;justify-content:center"> <%=image_tag 'heart.jpeg' %> </div>
+  <br><br><br>
+
+  <!--<div class="bxslider">-->
+    <!--<div><%#= image_tag 'IMG_8243.JPG'%></div>-->
+    <!--<div><%#= image_tag 'IMG_8244.JPG'%></div>-->
+    <!--<div><%#= image_tag 'IMG_8245.JPG'%></div>-->
+  <!--</div>-->
+
+</body>
+
